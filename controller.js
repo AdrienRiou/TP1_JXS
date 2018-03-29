@@ -30,7 +30,6 @@ class Pencil {
     onInteractionStart(dnd)
     {
         this.updateCurrentShape(dnd);
-        //this.currentShape.paint(this.ctx, this.canvas);
         this.dessin.addForme(this.currentShape);
     }
 
@@ -50,19 +49,20 @@ class Pencil {
 
     onInteractionEnd(dnd)
     {
-        /*
-        if(this.currEditingMode == editingMode.line){
-            this.currentShape = new Line(dnd.posInit_x, dnd.posInit_y, dnd.posFin_x, dnd.posFin_y, this.currLineWidth, this.currColour);
-
+        if(this.currEditingMode == editingMode.line) {
+            this.dessin.tabForm[this.dessin.tabForm.length-1].x2 = dnd.posFin_x;
+            this.dessin.tabForm[this.dessin.tabForm.length-1].y2 = dnd.posFin_y;
         }
         else{
-            this.currentShape = new Rectangle(dnd.posInit_x, dnd.posInit_y, dnd.posFin_y - dnd.posInit_y , dnd.posFin_x - dnd.posInit_x, this.currLineWidth, this.currColour);
-        }
-        this.dessin.addForme(this.currentShape);
-        */
-       this.updateCurrentShape(dnd);
+            this.dessin.tabForm[this.dessin.tabForm.length-1].longueur = dnd.posFin_x - dnd.posInit_x;
+            this.dessin.tabForm[this.dessin.tabForm.length-1].hauteur = dnd.posFin_y - dnd.posInit_y;
 
-       this.currentShape
+        }
+
+        this.dessin.paint(ctx, canvas);
+        //this.updateCurrentShape(dnd);
+
+        //this.currentShape
 
     }
     
